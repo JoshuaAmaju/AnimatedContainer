@@ -171,18 +171,6 @@ class AnimatedContainer extends HTMLElement {
     }
   }
 
-  generateHash(length = 10) {
-    let hash = "";
-    do {
-      hash += Math.random()
-        .toString(36)
-        .substr(2);
-    } while (hash.length < length);
-
-    hash = hash.substr(0, length);
-    return hash;
-  }
-
   getRect(element) {
     return element.getBoundingClientRect();
   }
