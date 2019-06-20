@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      animated-container {
+        display: flex;
+        flex-wrap: wrap;
+        background: #ccc;
+      }
+
+      animated-container * {
+        margin: 1em;
+        width: 10em;
+        height: 10em;
+        background: #fff;
+      }
+    </style>
   </head>
   <body>
     <animated-container>
@@ -13,5 +27,14 @@
       <div>three</div>
       <div>four</div>
     </animated-container>
+
+    <script>
+      const animatedContainer = document.querySelector("animated-container");
+      // setInterval(() => {
+      //   const div = document.createElement("div");
+      //   div.textContent = "div";
+      //   animatedContainer.appendChild(div);
+      // }, 4000);
+    </script>
   </body>
 </html>

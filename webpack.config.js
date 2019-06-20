@@ -1,18 +1,19 @@
 const path = require("path");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  mode: "development",
   entry: path.resolve(__dirname, "./src/index.js"),
   output: {
-    filename: "[name].[hash].js",
-    app: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[hash].js"
   },
   devServer: {
-    hot: true,
+    contentBase: path.resolve(__dirname, "dist"),
     port: 3000,
+    hot: true,
     compress: true,
-    historyApiFallback: true,
-    contentBase: path.resolve(__dirname, "dist")
+    historyApiFallback: true
   },
   module: {
     rules: [
@@ -22,14 +23,16 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-              presets: ['@babel/preset-env']
+            presets: ["@babel/preset-env"]
           }
         }
       }
     ]
   },
-  plugins: [new HtmlWebpackPlugin({
-      title: 'AnimatedContainer'
-      template: path.resolve(__dirname, "./src/index.html"),
-  })]
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Simple SPA",
+      template: path.resolve(__dirname, "./src/index.html")
+    })
+  ]
 };
